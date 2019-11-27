@@ -45,3 +45,15 @@ sorted_wine = selection_sort(wine_data, sort_by - 1, direction_of_sort == 2)
 for i in range(len(sorted_wine)):
   output = "{} {} {} {}".format(sorted_wine[i][0], sorted_wine[i][1], sorted_wine[i][2], sorted_wine[i][3])
   print(output)
+  
+  
+  
+  
+  
+  # the test file
+  name,type,price,reviewscore
+Martha's Vineyard,Carbenet Sauvignon,235,96
+Carodorum Reserva,Tinta de Toro,110,96
+Special Selected Late,Sauvignon Blanc,90,96
+Reserve,Pinor Noir,65,96
+La Brulade,Provence Red Blend,66,95
