@@ -1,0 +1,47 @@
+def load_wine_data(filename):
+  file = open(filename)
+  file.readline()
+  list_of_tuples = []
+  for line in file:
+    data = line.split(",")
+    name = data[0]
+    type = data[1]
+    price = data[2]
+    reviewscore = data[3]
+    vineyard = (name, type, price, reviewscore)
+    list_of_tuples.append(vineyard)
+  return list_of_tuples
+
+def selection_sort(tuple_list, sort_index, reverse_order):
+  if reverse_order:
+    for i in range(len(tuple_list)):
+      maximum = tuple_list[i][sort_index]
+      index = i
+      for j in range(i+1,len(tuple_list)):
+        if tuple_list[j][sort_index] > maximum:
+          maximum = tuple_list[j][sort_index]
+          index = j
+      tuple_list[i],tuple_list[index] = tuple_list[index],tuple_list[j]
+    return tuple_list
+
+  else:  
+    for i in range(len(tuple_list)):
+      minimum = tuple_list[i][sort_index]
+      index = i
+      for j in range(i+1,len(tuple_list)):
+        if tuple_list[j][sort_index] < minimum:
+          minimum = tuple_list[j][sort_index]
+          index = j
+      tuple_list[i],tuple_list[index] = tuple_list[index],tuple_list[j]
+    return tuple_list
+
+
+sort_by = int(input("Would you like to sort by Wine name (1), type (2), price(3), or review score (4)? Enter a number: "))
+direction_of_sort = int(input("Sort lowest to highest (1) or highest to lowest (2)? Enter a number: "))
+
+wine_data = load_wine_data("130kwines.csv")
+sorted_wine = selection_sort(wine_data, sort_by - 1, direction_of_sort == 2)
+
+for i in range(len(sorted_wine)):
+  output = "{} {} {} {}".format(sorted_wine[i][0], sorted_wine[i][1], sorted_wine[i][2], sorted_wine[i][3])
+  print(output)
