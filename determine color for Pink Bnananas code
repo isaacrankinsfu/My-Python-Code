@@ -1,0 +1,5 @@
+def is_yellow(r,g,b):
+  yellow = False
+  if 100 <= r <= 256 and 100 <= g <= 256 and 0 <= b <= 190:
+    yellow = True
+  return yellow
