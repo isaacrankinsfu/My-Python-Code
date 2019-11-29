@@ -1,0 +1,23 @@
+def discount(price):
+  cad = price*1.50
+  discount = cad*0.50
+  return discount
+
+souvenirs = []
+while True:
+  souvenir = input("How many euros is souvenir " + str(len(souvenirs)+1) + "? ")
+  if souvenir == "done":
+    break
+
+  price = float(souvenir)
+  souvenirs.append(price)
+
+total = 0
+for i in range(len(souvenirs)):
+  total += discount(souvenirs[i])
+  deal = "{:.2f}".format(discount(souvenirs[i]))
+  print("Souvenir " + str(i+1) + " costs: $" + deal + " CAD.")
+
+print("Total: $" + str(total) + " CAD.")
+
+
