@@ -1,0 +1,130 @@
+import turtle
+bob = turtle.Turtle()
+bob.hideturtle()
+rob = turtle.Turtle()
+rob.hideturtle()
+
+
+# the first tree
+def draw_tree(x,y):
+  bob.speed(9)
+  bob.color("green")
+  bob.penup()
+  bob.goto(x,y)
+  bob.pendown()
+  bob.left(90)
+  bob.forward(30)
+  bob.right(90)
+  bob.forward(28)
+  bob.left(135)
+  bob.forward(30*2**0.5)
+  bob.right(135)
+  bob.forward(28)
+  bob.left(135)
+  bob.forward(30*2**0.5)
+  bob.right(135)
+  bob.forward(28)
+  bob.left(135)
+  bob.forward(30*2**0.5)
+  bob.left(90)
+  bob.forward(30*2**0.5)
+  bob.left(135)
+  bob.forward(28)
+  bob.right(135)
+  bob.forward(30*2**0.5)
+  bob.left(135)
+  bob.forward(28)
+  bob.right(135)
+  bob.forward(30*2**0.5)
+  bob.left(135)
+  bob.forward(28)
+  bob.right(90)
+  bob.forward(30)
+
+# more trees
+def draw_trees(x,y):
+  bob.speed(9)
+  bob.left(90)
+  bob.color("green")
+  bob.penup()
+  bob.goto(x,y)
+  bob.pendown()
+
+  bob.left(90)
+  bob.forward(30)
+  bob.right(90)
+
+  for i in range(2):
+    bob.forward(28)
+    bob.left(135)
+    bob.forward(30*2**0.5)
+    bob.right(135)
+
+  bob.forward(28)
+  bob.left(135)
+  bob.forward(30*2**0.5)
+  bob.left(90)
+  bob.forward(30*2**0.5)
+  bob.left(135)
+
+  for i in range(2):
+    bob.forward(28)
+    bob.right(135)
+    bob.forward(30*2**0.5)
+    bob.left(135)
+
+  bob.forward(28)
+  bob.right(90)
+  bob.forward(30)
+
+# stars
+def draw_star(x,y):
+    rob.speed(9)
+    rob.penup()
+    rob.goto(x,y)
+    rob.color("gold")
+    rob.pendown()
+    color = "gold"
+    rob.fillcolor(color)
+    rob.begin_fill()
+
+    for i in range(5):
+        rob.forward(20)
+        rob.right(120)
+        rob.forward(20)
+        rob.left(48)
+    
+    rob.end_fill()
+  
+
+
+print("Let's draw a picture of a nice forest with a starry sky!")
+print("Where do you want your first tree?")
+x = input("x coordinate: ")
+y = input("y coordinate: ")
+print("")
+draw_tree(x,y)
+
+while True:
+  print("Where do you want your next tree?\nAnd when you're done drawing trees,type: I'm done")
+  x = input("x coordinate: ")
+  y = input("y coordinate: ")
+  print("")
+  draw_trees(x,y)
+
+  if x == "I'm done" or y == "I'm done":
+    break
+
+print("Now lets add some stars to your master piece")
+print("And when you're happy with your master piece, type: I'm done")
+while True:
+  print("Where do you want a star?")
+  x = input("x coordinate: ")
+  y = input("y coordinate: ")
+  print("")
+  draw_star(x,y)
+
+  if x == "I'm done" or y == "I'm done":
+    break
+
+print("What a nice piece of artwork!")
