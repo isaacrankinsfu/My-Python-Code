@@ -1,0 +1,99 @@
+# music app
+# finds them songs basd on the danceability
+
+files = open("spotify.csv")
+junk = files.readline()
+
+
+
+# organize songs by danceability
+artist = []
+song = []
+danceability = []
+
+for info in files:
+  filedata = info.split(",")
+  artist.append(filedata[16].strip("\n"))
+  song.append(filedata[15])
+  danceability.append(int(float(filedata[2])*1000))
+
+length = len(danceability)
+
+for i in range(length):
+    
+    min_danceability = danceability[i]
+    min_danceability_index = i
+
+    
+    for j in range(i+1, length):
+      if danceability[j] < min_danceability:
+        min_danceability = danceability[j]
+        min_danceability_index = j
+
+    
+    danceability[min_danceability_index], danceability[i] = danceability[i], danceability[min_danceability_index]
+
+    song[min_danceability_index], song[i] = song[i], song[min_danceability_index]
+
+    artist[min_danceability_index], artist[i] = artist[i], artist[min_danceability_index]
+
+
+
+
+
+
+def binary_search(input_list,item):
+
+  first = 0 
+  last = len(input_list)-1
+
+  found = False
+  found_index = -1
+
+  while (not found) and first <= last:
+    midpoint = ((first + last))//2
+    if input_list[midpoint] == item:
+      found = True
+      found_index = midpoint
+    
+    else:
+      if item < input_list[midpoint]:
+        last = midpoint - 1
+      else:
+        first = midpoint + 1
+  
+  return found_index
+
+
+
+
+# chatbot to the user to ask their desired danceability of the songs
+print("Hello, I'm going to recommend some songs for you!")
+print("On the danceability scale from 122-984, with 984 being super down to get dancing, how down are you?")
+rad = int(input())
+
+# add songs close to their desired danceability factor
+song_suggest_indices = []
+for i in range(5):
+  if binary_search(danceability,rad+i) > 0:
+    song_suggest_indices.append(binary_search(danceability,rad+i))
+for i in range(5):
+  if binary_search(danceability,rad-i-1) > 0:
+    song_suggest_indices.append(binary_search(danceability,rad-i-1))
+
+
+# recommend them to songs
+if len(song_suggest_indices) > 1:
+  print("\nI think you'll like these songs!\n")
+  for indices in song_suggest_indices:
+    print(song[indices] + " by " + artist[indices] + "\n")
+  print("I hope you like them!")
+
+elif len(song_suggest_indices) == 1:
+  print("\nI think you'll like this song!\n")
+  print(song[0] + " by " + artist[0] + "\n")
+  print("I hope you like it!")
+
+else:
+  print("I'm sorry, I don't have any songs for you. Maybe try another danceability factor")
+
