@@ -1,0 +1,43 @@
+numbers = [1,6,5,8,9,0,3,4,5,2,4,7]
+letters = ["a","f","s","d","g","h","j","k","l"]
+
+def sort(lists):
+  for i in range(len(lists)):
+    maxn = lists[i]
+    maxi = i
+    for j in range(i+1,len(lists)):
+      if lists[j] > maxn:
+        maxn = lists[j]
+        maxi = j
+    lists[maxi],lists[i] = lists[i],lists[maxi]
+  return lists
+
+max_numbers = sort(numbers)
+max_letters = sort(letters)
+
+def binary_search(sorted_list,query):
+  first = 0
+  last = len(sorted_list)-1
+  found = False
+
+  while (not found) and first <= last:
+    mid = (first+last)//2
+    if sorted_list[mid] == query:
+      found = True
+    elif sorted_list[mid] < query:
+      last = mid -1
+    else:
+      first = mid +1
+  return found
+
+print(binary_search(max_letters,"d"))
+print(binary_search(max_numbers,40))
+
+def linear_search(sorted_list,query):
+  indices = []
+  for i in range(len(sorted_list)):
+    if sorted_list[i] == query:
+      indices.append(i)
+  return "You can find {} at the indices {}".format(query,indices)
+
+print(linear_search(max_numbers,6))
