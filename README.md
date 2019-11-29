@@ -13,14 +13,14 @@
 ![codeimage](https://github.com/isaacrankinsfu/My-Python-Code/blob/master/code.PNG)
 # _With a function which picks up the relevant shades of yellow based on RGB values..._
 ![colordetector](https://github.com/isaacrankinsfu/My-Python-Code/blob/master/color%20detector.PNG)
-# _Then magically we have "gmo" pink bananas!_
-# _Who wouldn't love to try a pink banana?_
+# _Then magically we have "GMO" pink bananas!_
 ![pinkbananas](https://github.com/isaacrankinsfu/My-Python-Code/blob/master/pink%20bananas.PNG)
-
-
-
+# _Who wouldn't love to try a pink banana?_
+#
 #
 #
 #
 #
 # _All my code in this repository is in Python, if you'd like, you can copy it into wherever you run Python. I really like using Repl.it, a site where you can create and run code in various different languages_
+# 
+# _Some of the code requires the use of files. Those files are either in the repository named in a fashion that makes it clear which code it is meant for, or if the file is very small just for the purpose of testing, it will be at the bottom of the file containing the code
