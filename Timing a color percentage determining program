@@ -1,0 +1,44 @@
+# timing my program that figures out the percentages or red and white that make up canada's flag
+import time
+from PIL import Image
+t1 = time.time()
+
+# function for determining red or white
+def colour(r,g,b):
+  if r > 200 and g < 100 and b < 100:
+    return "red"
+  elif r > 200 and g > 200 and b > 200:
+    return "white"
+
+flag_file = Image.open("flag.jpg")
+flag_image = flag_file.load()
+
+width = flag_file.width
+height = flag_file.height
+total_pixels = width*height 
+
+# pixel lists for red and white
+red_pixels = []
+white_pixels = []
+
+for w in range(width):
+  for h in range(height):
+    r = flag_image[w,h][0]
+    g = flag_image[w,h][1]
+    b = flag_image[w,h][2]
+    if colour(r,g,b) == "red":
+      red_pixels.append(flag_image[w,h])
+    elif colour(r,g,b) == "white":
+      white_pixels.append(flag_image[w,h])
+
+
+per_red = len(red_pixels)*100/total_pixels
+per_white = len(white_pixels)*100/total_pixels
+
+statement = "{:.3f}% of Canada's flag is red and {:.3f}% of our flag is white, who knew?".format(per_red,per_white)
+print(statement)
+t2 = time.time()
+
+program_run_time = t2-t1
+time_of_program = "It took {:.3f} seconds to calculate the percentages of red and white which make up Canada's flag".format(program_run_time)
+print(time_of_program)
